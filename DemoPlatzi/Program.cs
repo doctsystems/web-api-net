@@ -13,6 +13,8 @@ builder.Services.AddSwaggerGen();
 // Inyectamos nuestras dependencias
 //builder.Services.AddScoped<IHelloWorldService, HelloWorldServices>();
 builder.Services.AddScoped<IHelloWorldService>(p => new HelloWorldService());
+builder.Services.AddScoped<ICategoriaService, CategoriaService>();
+builder.Services.AddScoped<ITareaService, TareaService>();
 
 var app = builder.Build();
 
