@@ -1,4 +1,5 @@
 using DemoPlatzi.Middlewares;
+using DemoPlatzi.Models;
 using DemoPlatzi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Inyectamos dependencias de conexion a DB
+builder.Services.AddSqlServer<TareasContext>(builder.Configuration.GetConnectionString("conn"));
 
 // Inyectamos nuestras dependencias
 //builder.Services.AddScoped<IHelloWorldService, HelloWorldServices>();

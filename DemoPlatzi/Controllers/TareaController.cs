@@ -14,6 +14,7 @@ namespace DemoPlatzi.Controllers
         {
             this.tareaService = tareaService;
         }
+
         [HttpGet]
         public IActionResult Get()
         {

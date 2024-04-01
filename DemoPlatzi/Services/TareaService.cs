@@ -12,11 +12,12 @@ namespace DemoPlatzi.Services
         }
         public IEnumerable<Tarea> GetAll()
         {
-            return _context.Tareas.ToList();
+            return _context.Tareas;
         }
 
         public async Task Save(Tarea tarea)
         {
+            tarea.FechaCreacion = DateTime.Now;
             _context.Add(tarea);
             await _context.SaveChangesAsync();
         }
@@ -27,12 +28,10 @@ namespace DemoPlatzi.Services
 
             if (_tarea != null)
             {
-                _tarea.CategoriaId = tarea.CategoriaId;
                 _tarea.Titulo = tarea.Titulo;
                 _tarea.Descripcion = tarea.Descripcion;
                 _tarea.PrioridadTarea = tarea.PrioridadTarea;
-                _tarea.FechaCreacion = tarea.FechaCreacion;
-                _tarea.Resumen = tarea.Resumen;
+                _tarea.CategoriaId = tarea.CategoriaId;
                 await _context.SaveChangesAsync();
             }
         }

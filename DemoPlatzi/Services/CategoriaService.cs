@@ -13,7 +13,7 @@ namespace DemoPlatzi.Services
 
         public IEnumerable<Categoria> GetAll()
         {
-            return _context.Categorias.ToList();
+            return _context.Categorias;
         }
 
         public async Task Save(Categoria categoria)

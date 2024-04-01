@@ -12,6 +12,6 @@ namespace DemoPlatzi.Models
         public int Peso { get; set; }
 
         [JsonIgnore]
-        public virtual ICollection<Tarea> Tareas { get; set; }
+        public virtual ICollection<Tarea>? Tareas { get; set; }
     }
 }
