@@ -33,6 +33,7 @@ namespace DemoPlatzi.Controllers
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
+            _logger.LogInformation("Retornamos la lista ListWeatherForecasts");
             return ListWeatherForecasts;
         }
 
