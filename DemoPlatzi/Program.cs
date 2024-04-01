@@ -1,4 +1,5 @@
 using DemoPlatzi.Middlewares;
+using DemoPlatzi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Inyectamos nuestras dependencias
+//builder.Services.AddScoped<IHelloWorldService, HelloWorldServices>();
+builder.Services.AddScoped<IHelloWorldService>(p => new HelloWorldServices());
 
 var app = builder.Build();
 
@@ -21,6 +26,10 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+// Llamada a middlewares propios y de terceros
+// app.UseWelcomePage();
+// app.UseTimeMiddleware();
 
 app.MapControllers();
 
